@@ -51,13 +51,13 @@ const getDatas = (req, res) => {
                         api_key: keys.API_KEY,
                         language: "en-US",
                         sort_by: "popularity.desc",
-                        with_genres: 10765,
-                        without_genres: 16
+                        with_genres: 16,
+                        with_original_language: "ja"
                     }
                 })
                 .then(response => {
-                    datas.scifiFantasySeries = [];
-                    datas.scifiFantasySeries = data.scifiFantasySeries.concat(response.data.results);
+                    datas.anime = [];
+                    datas.anime = data.anime.concat(response.data.results);
 
                     return res.json(datas);
                 })

@@ -3,11 +3,11 @@ import React from 'react';
 import PopularTv from './PopularTv/PopularTv';
 import PopularMovies from './PopularMovies/PopularMovies';
 import HorrorMovies from './HorrorMovies/HorrorMovies';
-import ScifiFantasySeries from './ScifiFantasySeries/ScifiFantasySeries';
+import Anime from './Anime/Anime';
 
 import './Main.css';
 
-const Main = ({tvSeries, movies, horror, scifiFantasySeries}) => {
+const Main = ({tvSeries, movies, horror, anime}) => {
     return(
         <div className="main">
             <section>
@@ -23,8 +23,8 @@ const Main = ({tvSeries, movies, horror, scifiFantasySeries}) => {
                 <HorrorMovies horror={horror}/>
             </section>
             <section>
-                <h1 className="title_section">Sci-fi / Fantasy Tv Series</h1>
-                <ScifiFantasySeries scifiFantasySeries={scifiFantasySeries}/>
+                <h1 className="title_section">Anime</h1>
+                <Anime anime={anime}/>
             </section>
         </div>
     )

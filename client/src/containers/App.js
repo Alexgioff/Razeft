@@ -3,9 +3,8 @@ import Header from '../components/Header/Header';
 import Main from '../components/Home/Main';
 import {connect} from 'react-redux';
 import {getShows} from '../actions/action';
-import $ from 'jquery';
 import './App.css';
-
+import $ from 'jquery';
 
 
 
@@ -76,7 +75,7 @@ class App extends Component {
         return (
           <div className="container">
             <Header element={this.state.headerSlide}/>
-            <Main tvSeries={this.props.data.popularSeries} movies={this.props.data.popularMovies} horror={this.props.data.horrorMovies} scifiFantasySeries={this.props.data.scifiFantasySeries}/>
+            <Main tvSeries={this.props.data.popularSeries} movies={this.props.data.popularMovies} horror={this.props.data.horrorMovies} anime={this.props.data.anime}/> 
           </div>
         );
       }

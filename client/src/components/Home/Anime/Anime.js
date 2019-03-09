@@ -9,12 +9,12 @@ const responsive = {
     1024: { items: 4 },
   };
 
-const ScifiFantasySeries = ({scifiFantasySeries}) => {
+const Anime = ({anime}) => {
     const handleOnDragStart = e => e.preventDefault();
     return (
         <AliceCarousel mouseDragEnabled  responsive={responsive} buttonsDisabled={true} dotsDisabled={true}>
           {
-            scifiFantasySeries.map((tv, index) => {
+            anime.map((tv, index) => {
                  return(
                     <picture onDragStart={handleOnDragStart} key={index}>
                         <source  media="(max-width: 500px)" srcSet={`https://image.tmdb.org/t/p/w500${tv.poster_path}`} />
@@ -29,4 +29,4 @@ const ScifiFantasySeries = ({scifiFantasySeries}) => {
 }
 
 
-export default ScifiFantasySeries;
+export default Anime;

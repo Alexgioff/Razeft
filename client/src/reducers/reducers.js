@@ -2,8 +2,7 @@ import {GET_SHOWS_HOME_PEDDING,GET_SHOWS_HOME_SUCCESS, GET_SHOWS_HOME_FAILED} fr
 
 const initialState = {
     isPedding: true,
-    data: [],
-    isLoad: false
+    data: []
 }
 
 
@@ -11,15 +10,13 @@ const initialState = {
 export const getShowsHome = (state=initialState, action={}) => {
     switch(action.type) {
         case GET_SHOWS_HOME_PEDDING:
-            return Object.assign({}, state, {isPedding: true, isLoad: true});
+            return Object.assign({}, state, {isPedding: true});
         case GET_SHOWS_HOME_SUCCESS:
             return Object.assign({}, state, {
-                                    data: action.payload,
-                                    isPedding: false,
-                                    isLoad: true
+                                    data: action.payload
                                 });
         case GET_SHOWS_HOME_FAILED:
-            return Object.assign({}, state, {error: action.payload, isPedding: true, isLoad: false});
+            return Object.assign({}, state, {error: action.payload, isPedding: true});
         default: 
         return state;
     }
