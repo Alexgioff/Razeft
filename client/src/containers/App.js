@@ -1,9 +1,28 @@
 import React, { Component } from 'react';
 import Header from '../components/Header/Header';
 import Main from '../components/Home/Main';
-
-import './App.css';
+import {connect} from 'react-redux';
+import {getShows} from '../actions/action';
 import $ from 'jquery';
+import './App.css';
+
+
+
+
+const mapStateToProps = (state) => {
+  return {
+    isPedding: state.getShowsHome.isPedding,
+    data: state.getShowsHome.data
+  }
+}
+
+
+const mapDispatchToProps = (dispatch, ) => {
+  return {
+    onGetShows: () => dispatch(getShows())
+  }
+}
+
 
 class App extends Component {
 
@@ -11,58 +30,43 @@ class App extends Component {
     super();
     this.state = {
       isLoad: false,
-      tvSeries: [],
-      movies: [],
-      horror: [],
-      scifiFantasySeries: [],
       headerSlide: []
     }
   }
 
 
   componentDidMount() {
-    this.loadHeader();
+    this.props.onGetShows();
+    setTimeout(() => {
+      this.loadHeader(this.props.data.popularSeries, this.props.data.popularMovies)
+    }, 6000)
   }
 
-  loadHeader = () =>{
-    fetch('api/data')
-        .then(data => data.json())
-        .then(data => {
-            this.setState({
-                tvSeries: data.popularSeries,
-                movies: data.popularMovies,
-                horror: data.horrorMovies,
-                scifiFantasySeries: data.scifiFantasySeries
-            })
+
+  loadHeader = (tvSeries, movies) =>{
+    let i = 0;
+    let pre = [];
+    while(i < 5 && this.state.headerSlide.length !== 5) {
+        let number = Math.floor(Math.random() * 20 );
+        pre.forEach(num => {
+          if(number === num){
+            number++;
+          }
         })
-        .then(data => {
-            let i = 0;
-            let pre = [0];
-            while(i < 5 && this.state.headerSlide.length !== 5) {
-                let number = Math.floor(Math.random() * 20 );
-                pre.forEach(num => {
-                  if(number === num){
-                    number++;
-                  }
-                })
-                if(number % 2 === 0 && this.state.tvSeries[number].backdrop_path != null){
-                    let newElement = [...this.state.headerSlide, this.state.tvSeries[number]];
-                    this.setState({headerSlide: newElement})
-                } else  if(this.state.movies[number].backdrop_path != null){
-                    let newElement = [...this.state.headerSlide, this.state.movies[number]];
-                    this.setState({headerSlide: newElement})
-                }
-                pre.push(number);
-                i++;
-            }
-        })
-        .then(() => {
-          $(".loader").fadeOut(1000);
-          setTimeout(()=> {
-            this.setState({isLoad: true})
-          },1000)
-        })
-        .catch(err => console.log(err));
+        if(number % 2 === 0 && tvSeries[number].backdrop_path != null){
+            let newElement = [...this.state.headerSlide, tvSeries[number]];
+            this.setState({headerSlide: newElement})
+        } else  if(movies[number].backdrop_path != null){
+            let newElement = [...this.state.headerSlide,movies[number]];
+            this.setState({headerSlide: newElement})
+        }
+        pre.push(number);
+        i++;
+    }
+    $(".loader").fadeOut(1000);
+    setTimeout(()=> {
+      this.setState({isLoad: true})
+    },1000)
   }
 
   render() {
@@ -72,11 +76,11 @@ class App extends Component {
         return (
           <div className="container">
             <Header element={this.state.headerSlide}/>
-            <Main tvSeries={this.state.tvSeries} movies={this.state.movies} horror={this.state.horror} scifiFantasySeries={this.state.scifiFantasySeries}/> 
+            <Main tvSeries={this.props.data.popularSeries} movies={this.props.data.popularMovies} horror={this.props.data.horrorMovies} scifiFantasySeries={this.props.data.scifiFantasySeries}/>
           </div>
         );
       }
   }
 }
 
-export default App;
+export default connect(mapStateToProps, mapDispatchToProps)(App);
