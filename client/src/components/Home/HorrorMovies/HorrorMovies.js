@@ -9,12 +9,19 @@ const responsive = {
     1024: { items: 4 },
   };
 
+const horroMovies = [];
+
 const HorrorMovies = ({horror}) => {
     const handleOnDragStart = e => e.preventDefault();
+    horror.forEach(horror => {
+      if(horror.poster_path != null){
+        horroMovies.push(horror);
+      }
+    })
     return (
         <AliceCarousel mouseDragEnabled  responsive={responsive} buttonsDisabled={true} dotsDisabled={true}>
           {
-              horror.map((horror, index) => {
+              horroMovies.map((horror, index) => {
                  return(
                     <picture onDragStart={handleOnDragStart} key={index}>
                         <source  media="(max-width: 500px)" srcSet={`https://image.tmdb.org/t/p/w500${horror.poster_path}`} />
