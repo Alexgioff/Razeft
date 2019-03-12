@@ -9,13 +9,21 @@ const responsive = {
     1024: { items: 4 },
   };
 
+  const series = [];
+
 const PopularTv = ({tvSeries}) => {
     const handleOnDragStart = e => e.preventDefault();
+    tvSeries.forEach(tv => {
+      if(tv.poster_path != null) {
+        series.push(tv);
+      }
+    })
     return (
         <AliceCarousel mouseDragEnabled  responsive={responsive} buttonsDisabled={true} dotsDisabled={true}>
           {
-              tvSeries.map((tv, index) => {
-                 return(
+              series.map((tv, index) => {
+                
+                  return(
                     <picture onDragStart={handleOnDragStart} key={index}>
                         <source  media="(max-width: 500px)" srcSet={`https://image.tmdb.org/t/p/w500${tv.poster_path}`} />
                         <source media="(max-width: 780px)" srcSet={`https://image.tmdb.org/t/p/w780${tv.poster_path}`}/>

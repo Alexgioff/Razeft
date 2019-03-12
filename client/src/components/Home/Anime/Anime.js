@@ -9,12 +9,18 @@ const responsive = {
     1024: { items: 4 },
   };
 
+const animeTv = [];
 const Anime = ({anime}) => {
     const handleOnDragStart = e => e.preventDefault();
+    anime.forEach(anim => {
+      if(anim.poster_path != null) {
+        animeTv.push(anim);
+      }
+    })
     return (
         <AliceCarousel mouseDragEnabled  responsive={responsive} buttonsDisabled={true} dotsDisabled={true}>
           {
-            anime.map((tv, index) => {
+            animeTv.map((tv, index) => {
                  return(
                     <picture onDragStart={handleOnDragStart} key={index}>
                         <source  media="(max-width: 500px)" srcSet={`https://image.tmdb.org/t/p/w500${tv.poster_path}`} />
