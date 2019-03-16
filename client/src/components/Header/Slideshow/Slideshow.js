@@ -23,7 +23,7 @@ class Slideshow extends Component {
                 .fadeIn(3000)
                 .end()
                 .appendTo('.slideshow')
-        }, 4000)
+        }, 6000)
     }
 
    render() {
