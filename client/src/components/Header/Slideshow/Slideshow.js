@@ -18,9 +18,9 @@ class Slideshow extends Component {
         $(".slideshow > .card:gt(0)").hide();
         setInterval(() => {
             $(".slideshow > .card:first")
-                .fadeOut(1500)
+                .fadeOut(3000)
                 .next()
-                .fadeIn(1500)
+                .fadeIn(3000)
                 .end()
                 .appendTo('.slideshow')
         }, 4000)
