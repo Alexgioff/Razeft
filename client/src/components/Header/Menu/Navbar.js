@@ -1,5 +1,5 @@
 import React from 'react';
-
+import { NavLink } from 'react-router-dom'
 import './Navbar.css';
 
 const Navbar = () => {
@@ -7,9 +7,9 @@ const Navbar = () => {
         <div className="menu">
             <h1 className="logo">R<span>azeft</span></h1>
             <nav className="primary_menu">
-                <li><a href="https://google.com">Browse</a></li>
-                <li><a href="https://google.com">Movies</a></li>
-                <li><a href="https://google.com">Tv Series</a></li>
+                <li><NavLink to="/" exact activeClassName="active">Home</NavLink></li>
+                <li><NavLink to="/movies" exact activeClassName="active">Movies</NavLink></li>
+                <li><NavLink to="/tv" exact activeClassName="active">TV Series</NavLink></li>
             </nav>
             <nav className="menu_dinamic">
                 <div className="account">
