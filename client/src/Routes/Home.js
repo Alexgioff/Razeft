@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import Header from '../components/Header/Header';
+import Slideshow from '../components/Header/Slideshow/Slideshow';
 import Main from '../components/Home/Main';
 import {getShows} from '../actions/action';
 import $ from 'jquery';
@@ -57,21 +58,22 @@ class Home extends Component  {
         }
         $(".loader").fadeOut(1000);
         setTimeout(()=> {
+          var header = document.querySelector("header");
+          header.classList.add("header-slide")
           this.setState({isLoad: true})
         },1000)
     }
 
     render() {
-        if(!this.state.isLoad){
-            return <h1 className="loader">Loading</h1>
-        } else {
-           return (
-                <div className="container">
-                    <Header element={this.state.headerSlide}/>
-                    <Main tvSeries={this.props.data.popularSeries} movies={this.props.data.popularMovies} horror={this.props.data.horrorMovies} anime={this.props.data.anime}/>
-                </div>
-            );
-        }
+      return(
+        <div className="container">
+          <header className="header">
+            <Header />
+            {!this.state.isLoad ? "" : <Slideshow element={this.state.headerSlide} />}
+          </header>
+          {!this.state.isLoad ? <h1 className="loader">Loading</h1> :  <Main tvSeries={this.props.data.popularSeries} movies={this.props.data.popularMovies} horror={this.props.data.horrorMovies} anime={this.props.data.anime}/> }
+        </div>
+      )
     }
 }
 

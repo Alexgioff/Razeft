@@ -122,29 +122,33 @@
     .header .menu .primary_menu li {
       font-size: 2rem;
       position: relative; }
-      .header .menu .primary_menu li::after {
+      .header .menu .primary_menu li .active {
+        color: #fff;
+        text-decoration: none;
+      }
+      .header .menu .primary_menu li .active::after {
         content: "";
         display: block;
         margin: 0 auto;
         height: 2px;
-        width: 0px;
+        width: 100%;
         background: #01d277;
         -webkit-transition: all .25s ease-in;
         -o-transition: all .25s ease-in;
-        transition: all .25s ease-in; }
-      .header .menu .primary_menu li:hover::after {
-        width: 100%; }
+        transition: all .25s ease-in;
+      }
+      
     .header .menu .menu_dinamic .my_list li {
       font-size: 2rem; }
-      .header .menu .menu_dinamic .my_list li::after {
+      
+      .header .menu .menu_dinamic .my_list li .active::after {
         content: "";
         display: block;
         margin: auto;
         height: 2px;
-        width: 0px;
+        width: 100%;
         background: #01d277;
         -webkit-transition: all .25s ease-in;
         -o-transition: all .25s ease-in;
         transition: all .25s ease-in; }
-      .header .menu .menu_dinamic .my_list li:hover::after {
-        width: 100%; } }
+       }

@@ -13,7 +13,11 @@ const getDatas = (req, res) => {
     })
     .then(response => {
         datas.popularSeries = [];
-        datas.popularSeries = datas.popularSeries.concat(response.data.results);
+        response.data.results.forEach(data => {
+            if(data.poster_path != null && data.backdrop_path != null){
+                datas.popularSeries.push(data);
+            }
+        })
        
         return datas;
     })
@@ -26,7 +30,11 @@ const getDatas = (req, res) => {
         })
         .then(response => {
             datas.popularMovies = [];
-            datas.popularMovies = datas.popularMovies.concat(response.data.results);
+            response.data.results.forEach(data => {
+                if(data.poster_path != null && data.backdrop_path != null){
+                    datas.popularMovies.push(data);
+                }
+            })
 
             return datas;
         })
@@ -41,7 +49,11 @@ const getDatas = (req, res) => {
             })
             .then(response => {
                 datas.horrorMovies = [];
-                datas.horrorMovies = datas.horrorMovies.concat(response.data.results);
+                response.data.results.forEach(data => {
+                    if(data.poster_path != null && data.backdrop_path != null){
+                        datas.horrorMovies.push(data);
+                    }
+                })
 
                 return datas;
             })
@@ -57,7 +69,11 @@ const getDatas = (req, res) => {
                 })
                 .then(response => {
                     datas.anime = [];
-                    datas.anime = data.anime.concat(response.data.results);
+                    response.data.results.forEach(data => {
+                        if(data.poster_path != null && data.backdrop_path != null){
+                            datas.anime.push(data);
+                        }
+                    })
 
                     return res.json(datas);
                 })

@@ -3,14 +3,11 @@ import React from 'react';
 import './Header.css';
 
 import Navbar from './Menu/Navbar';
-import Slideshow from './Slideshow/Slideshow';
 
-const Header = ({element}) => {
+
+const Header = () => {
     return(
-        <header className="header">
-         <Navbar />
-        <Slideshow element={element} /> 
-        </header>
+            <Navbar />
     )
 };
 
