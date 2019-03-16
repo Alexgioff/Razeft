@@ -13,6 +13,9 @@ class Slideshow extends Component {
         this.slide();
     }
 
+    componentWillUnmount() {
+        clearInterval(this.interval);
+    }
 
     slide = () => {
         $(".slideshow > .card:gt(0)").hide();

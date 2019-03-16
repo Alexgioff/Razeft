@@ -14,7 +14,8 @@ export const getShowsHome = (state=initialState, action={}) => {
             return Object.assign({}, state, {isPedding: true, data: []});
         case GET_SHOWS_HOME_SUCCESS:
             return Object.assign({}, state, {
-                                    data: action.payload
+                                    data: action.payload,
+                                    isPedding: false
                                 });
         case GET_SHOWS_HOME_FAILED:
             return Object.assign({}, state, {error: action.payload, isPedding: true});
