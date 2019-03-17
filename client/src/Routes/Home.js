@@ -3,7 +3,6 @@ import Header from '../components/Header/Header';
 import Slideshow from '../components/Header/Slideshow/Slideshow';
 import Main from '../components/Home/Main';
 import {getShows} from '../actions/action';
-import $ from 'jquery';
 import {connect} from 'react-redux';
 
 
@@ -56,7 +55,13 @@ class Home extends Component  {
             pre.push(number);
             i++;
         }
-        $(".loader").fadeOut(1000);
+
+        var loader = document.querySelector(".loader");
+
+        loader.opacity = 1;
+        (function fade(){(loader.opacity-=.1)<0?loader.display="none":setTimeout(fade,40)})();
+        fade();
+
         setTimeout(()=> {
           var header = document.querySelector("header");
           header.classList.add("header-slide")
