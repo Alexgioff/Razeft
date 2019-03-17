@@ -39,7 +39,7 @@ class Home extends Component  {
     loadHeader = (tvSeries, movies) =>{
         let i = 0;
         let pre = [];
-        while(i < 5 && this.state.headerSlide.length !== 5) {
+        while(i < 1 && this.state.headerSlide.length !== 1) {
             let number = Math.floor(Math.random() * 20 );
             pre.forEach(num => {
               if(number === num){
