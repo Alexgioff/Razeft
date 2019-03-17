@@ -58,9 +58,7 @@ class Home extends Component  {
 
         var loader = document.querySelector(".loader");
 
-        loader.opacity = 1;
-        (function fade(){(loader.opacity-=.1)<0?loader.display="none":setTimeout(fade,40)})();
-        fade();
+        this.fadeOut(loader);
 
         setTimeout(()=> {
           var header = document.querySelector("header");
@@ -68,6 +66,17 @@ class Home extends Component  {
           this.setState({isLoad: true})
         },1000)
     }
+
+     fadeOut = (el) => {
+      el.style.opacity = 1;
+      (function fade() {
+        if ((el.style.opacity -= .1) < 0) {
+          el.style.display = "none";
+        } else {
+          requestAnimationFrame(fade);
+        }
+      })();
+    };
 
     render() {
       return(
