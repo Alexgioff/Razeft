@@ -62,6 +62,7 @@ class Home extends Component  {
 
         setTimeout(()=> {
           var header = document.querySelector("header");
+         
           header.classList.add("header-slide")
           this.setState({isLoad: true})
         },1000)

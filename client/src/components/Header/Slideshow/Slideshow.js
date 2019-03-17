@@ -7,8 +7,12 @@ import Card from './Card/Card';
 
 class Slideshow extends Component {
 
-
-    
+    componentDidMount() {
+        var slide = document.querySelector(".slideshow");
+        setTimeout(() => {
+            slide.classList.add("slideshow-active");
+        },50);
+    }
 
    render() {
         return (
