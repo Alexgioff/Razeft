@@ -10,24 +10,19 @@ const responsive = {
   };
 
 
-const Movies = [];
 
-const PopularMovies = ({movies}) => {
+
+const Gallery = ({data}) => {
     const handleOnDragStart = e => e.preventDefault();
-    movies.forEach(movie => {
-      if(movie.poster_path != null){
-        Movies.push(movie)
-      }
-    }) 
     return (
         <AliceCarousel mouseDragEnabled  responsive={responsive} buttonsDisabled={true} dotsDisabled={true}>
           {
-              Movies.map((movie, index) => {
+              data.map((ele, index) => {
                  return(
                     <picture onDragStart={handleOnDragStart} key={index}>
-                        <source  media="(max-width: 500px)" srcSet={`https://image.tmdb.org/t/p/w500${movie.poster_path}`} />
-                        <source media="(max-width: 780px)" srcSet={`https://image.tmdb.org/t/p/w780${movie.poster_path}`}/>
-                        <img className="element" src={`https://image.tmdb.org/t/p/original${movie.poster_path}`} alt="Poster" />
+                        <source  media="(max-width: 500px)" srcSet={`https://image.tmdb.org/t/p/w500${ele.poster_path}`} />
+                        <source media="(max-width: 780px)" srcSet={`https://image.tmdb.org/t/p/w780${ele.poster_path}`}/>
+                        <img className="element" src={`https://image.tmdb.org/t/p/original${ele.poster_path}`} alt="Poster" />
                     </picture>
                  )
               })
@@ -37,4 +32,4 @@ const PopularMovies = ({movies}) => {
 }
 
 
-export default PopularMovies;
+export default Gallery;

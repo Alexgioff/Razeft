@@ -13,7 +13,7 @@ const mapStateToProps = (state) => {
     }
 }
 
-const mapDispatchToProps = (dispatch, ) => {
+const mapDispatchToProps = (dispatch) => {
     return {
       onGetShows: () => dispatch(getShows())
     }
@@ -36,9 +36,8 @@ class Home extends Component  {
     }
 
     loadHeader = (tvSeries, movies) =>{
-        let i = 0;
         let pre = [];
-        while(i < 1 && this.state.headerSlide.length !== 1) {
+        while(this.state.headerSlide.length !== 1) {
             let number = Math.floor(Math.random() * 20 );
             pre.forEach(num => {
               if(number === num){
@@ -53,7 +52,6 @@ class Home extends Component  {
                 this.setState({headerSlide: newElement})
             }
             pre.push(number);
-            i++;
         }
 
         var loader = document.querySelector(".loader");
@@ -62,7 +60,6 @@ class Home extends Component  {
 
         setTimeout(()=> {
           var header = document.querySelector("header");
-         
           header.classList.add("header-slide")
           this.setState({isLoad: true})
         },1000)

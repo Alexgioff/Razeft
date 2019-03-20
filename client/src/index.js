@@ -7,10 +7,10 @@ import thunkMiddleware from 'redux-thunk';
 import {createStore, applyMiddleware, combineReducers} from 'redux';
 import {createLogger} from 'redux-logger';
 import * as serviceWorker from './serviceWorker';
-import {getShowsHome} from './reducers/reducers';
+import {getShowsHome, getShowsMovies, getShowsTv} from './reducers/reducers';
 
 
-const rootReducers = combineReducers({getShowsHome});
+const rootReducers = combineReducers({getShowsHome, getShowsMovies, getShowsTv});
 
 const logger = createLogger();
 const store = createStore(rootReducers, applyMiddleware(thunkMiddleware, logger));
