@@ -33,7 +33,7 @@ export const getShowsHome = (state=initialStateShow, action={}) => {
 }
 
 const initialStateMovies = {
-    isPedding: true,
+    isPedding: false,
     movies: [],
     error: ""
 }
@@ -54,7 +54,7 @@ export const getShowsMovies = (state=initialStateMovies, action={}) => {
 
 
 const initialStateSeries = {
-    isPedding: true,
+    isPedding: false,
     series: [],
     error: ""
 }

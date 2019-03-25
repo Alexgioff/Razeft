@@ -30,9 +30,16 @@ class Home extends Component  {
 
     componentDidMount() {
         this.props.onGetShows();
+    }
+
+
+    componentWillUpdate(nextProps, prevState) {
+      console.log(nextProps.isPedding);
+      if(nextProps.isPedding === false) {
         setTimeout(() => {
           this.loadHeader(this.props.data.popularSeries, this.props.data.popularMovies)
-        }, 6000)
+        }, 3000);
+      }
     }
 
     loadHeader = (tvSeries, movies) =>{
